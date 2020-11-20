@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 14:02:08 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/13 18:08:28 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/20 12:53:29 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,15 @@ int		wrong_resolution(int width, int height)
 {
 	int w;
 	int h;
-	
+
 	w = width;
 	h = height;
 	if (width > 2560)
-	{
 		w = 2560;
-	}
 	if (height > 1400)
-	{
 		h = 1400;
-	}
-	if(width < 100 || height <= 100)
-		ft_putstr("resolution width and height must be superior to a 100 px !\n");
+	if (width <= 100 || height <= 100)
+		ft_putstr("resolution is < 100 px!\n");
 	get_resolution(w, h);
 	return (1);
 }

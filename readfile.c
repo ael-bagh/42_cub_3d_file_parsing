@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 15:27:14 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/14 11:42:01 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/20 13:41:31 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,20 @@ void	routing(char *line)
 
 int		main(void)
 {
-	int a;
+	char **ugh;
+
+	player.x = -1;
+	player.y = -1;
 	readline();
 	manage_map();
-	printf("%d\n%d\n", g_width, g_height);
-	printf("%s\n%s\n%s\n%s\n%s\n", g_no, g_so, g_we, g_ea, g_s);
-	printf("floor rgb:%d,%d,%d\n", g_fr, g_fg, g_fb);
-	printf("ceiling rgb:%d,%d,%d\n", g_cr, g_cg, g_cb);
-	// printf("%s\n", g_map);
-	for(int i = 0; g_map_array[i]; i++)
-		printf("%s\n", g_map_array[i]);
-		scanf("%d", &a);
+	longuest_line();
+	array_height();
+	ugh = map_manager();
+	// map_errors(ugh);
+	// printf("%d\n%d\n", g_width, g_height);
+	// printf("%s\n%s\n%s\n%s\n%s\n", g_no, g_so, g_we, g_ea, g_s);
+	// printf("floor rgb:%d,%d,%d\n", g_fr, g_fg, g_fb);
+	// printf("ceiling rgb:%d,%d,%d\n", g_cr, g_cg, g_cb);
+	for(int i = 0; ugh[i]; i++)
+		printf("%s\n", ugh[i]);
 }
