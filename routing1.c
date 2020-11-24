@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 15:40:10 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/13 18:06:04 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/24 00:14:24 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,121 +29,128 @@ void	get_re(char *line)
 		ft_putstr("Error:\nwrong number of parameters in resolution!\n");
 		exit(0);
 	}
-	if (str_is_digits(&par[1][0]) || str_is_digits(&par[2][0]))
+	if (str_is_digits(&par[1][0]) && str_is_digits(&par[2][0]))
 		wrong_resolution(atoi(&par[1][0]), atoi(&par[2][0]));
 	else
-		ft_putstr("wrong resolution  zine !");
+	{
+		ft_putstr("Error:\nwrong resolution!");
+		exit(0);
+	}
 	freethenipples(par);
 }
 
 void	get_no(char *line)
 {
 	char	**par;
-	int		cw;
+	char	*str;
 	int		re;
 
-	cw = c_w(line, ' ');
+	re = 0;
 	par = ft_split(line, ' ');
+	str = ft_strdup("");
 	if (g_no != NULL)
+		texture_error(0);
+	if (c_w(line, ' ') != 2)
 	{
-		ft_putstr("Error\ndouble inclusion\n");
-		exit(0);
-	}
-	if (cw != 2)
-	{
-		ft_putstr("Error:\nWrong number of parametres in north texture!\n");
-		exit(0);
-	}
-	else if ((re = open(&par[1][0], O_RDONLY) < 0))
-	{
-		ft_putstr("Error:\nFile or directory not found for north texture!\n");
-		exit(0);
+		while (++re < c_w(line, ' '))
+		{
+			str = ft_strjoin(str, &par[re][0]);
+			if (re != c_w(line, ' ') - 1)
+				str = ft_strjoin(str, " ");
+		}
+		if ((re = open(str, O_RDONLY) < 0))
+			texture_error(1);
+		else
+			g_no = ft_strdup(str);
 	}
 	else if ((re = open(&par[1][0], O_RDONLY) > 0))
 		g_no = ft_strdup(&par[1][0]);
-	freethenipples(par);
+	free_this_shit(str, par);
 }
 
 void	get_so(char *line)
 {
 	char	**par;
-	int		cw;
+	char	*str;
 	int		re;
 
-	cw = c_w(line, ' ');
+	re = 0;
 	par = ft_split(line, ' ');
+	str = ft_strdup("");
 	if (g_so != NULL)
+		texture_error(0);
+	if (c_w(line, ' ') != 2)
 	{
-		ft_putstr("Error\ndouble includion\n");
-		exit(0);
-	}
-	if (cw != 2)
-	{
-		ft_putstr("Error:\nWrong number of parametres in south texture!\n");
-		exit(0);
-	}
-	else if ((re = open(&par[1][0], O_RDONLY) < 0))
-	{
-		ft_putstr("Error:\nFile or directory not found for south texture!\n");
-		exit(0);
+		while (++re < c_w(line, ' '))
+		{
+			str = ft_strjoin(str, &par[re][0]);
+			if (re != c_w(line, ' ') - 1)
+				str = ft_strjoin(str, " ");
+		}
+		if ((re = open(str, O_RDONLY) < 0))
+			texture_error(2);
+		else
+			g_so = ft_strdup(str);
 	}
 	else if ((re = open(&par[1][0], O_RDONLY) > 0))
 		g_so = ft_strdup(&par[1][0]);
-	freethenipples(par);
+	free_this_shit(str, par);
 }
 
 void	get_we(char *line)
 {
 	char	**par;
-	int		cw;
+	char	*str;
 	int		re;
 
-	cw = c_w(line, ' ');
+	re = 0;
 	par = ft_split(line, ' ');
+	str = ft_strdup("");
 	if (g_we != NULL)
+		texture_error(0);
+	if (c_w(line, ' ') != 2)
 	{
-		ft_putstr("Error\ndouble includion\n");
-		exit(0);
-	}
-	if (cw != 2)
-	{
-		ft_putstr("Error:\nWrong number of parametres in west texture!\n");
-		exit(0);
-	}
-	else if ((re = open(&par[1][0], O_RDONLY) < 0))
-	{
-		ft_putstr("Error:\nFile or directory not found for west texture!\n");
-		exit(0);
+		while (++re < c_w(line, ' '))
+		{
+			str = ft_strjoin(str, &par[re][0]);
+			if (re != c_w(line, ' ') - 1)
+				str = ft_strjoin(str, " ");
+		}
+		if ((re = open(str, O_RDONLY) < 0))
+			texture_error(3);
+		else
+			g_we = ft_strdup(str);
 	}
 	else if ((re = open(&par[1][0], O_RDONLY) > 0))
 		g_we = ft_strdup(&par[1][0]);
-	freethenipples(par);
+	free_this_shit(str, par);
 }
 
 void	get_ea(char *line)
 {
 	char	**par;
-	int		cw;
+	char	*str;
 	int		re;
 
-	cw = c_w(line, ' ');
+	re = 0;
 	par = ft_split(line, ' ');
+	str = ft_strdup("");
 	if (g_ea != NULL)
+		texture_error(0);
+	if (c_w(line, ' ') != 2)
 	{
-		ft_putstr("Error\ndouble includion\n");
-		exit(0);
-	}
-	if (cw != 2)
-	{
-		ft_putstr("Error:\nWrong number of parametres in east texture!\n");
-		exit(0);
-	}
-	else if ((re = open(&par[1][0], O_RDONLY) < 0))
-	{
-		ft_putstr("Error:\nFile or directory not found for east texture!\n");
-		exit(0);
+		while (++re < c_w(line, ' '))
+		{
+			str = ft_strjoin(str, &par[re][0]);
+			if (re != c_w(line, ' ') - 1)
+				str = ft_strjoin(str, " ");
+		}
+		if ((re = open(str, O_RDONLY) < 0))
+			texture_error(4);
+		else
+			g_ea = ft_strdup(str);
 	}
 	else if ((re = open(&par[1][0], O_RDONLY) > 0))
 		g_ea = ft_strdup(&par[1][0]);
-	freethenipples(par);
+	free_this_shit(str, par);
 }

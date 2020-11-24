@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 10:57:24 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/13 17:31:25 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/24 20:33:43 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +53,30 @@ int		array_is_rgb(char **colors)
 void	get_s(char *line)
 {
 	char	**par;
-	int		cw;
+	char	*str;
 	int		re;
 
-	cw = c_w(line, ' ');
+	re = 0;
 	par = ft_split(line, ' ');
+	str = ft_strdup("");
 	if (g_s != NULL)
+		texture_error(0);
+	if (c_w(line, ' ') != 2)
 	{
-		ft_putstr("Error\ndouble includion\n");
-		exit(0);
-	}
-	if (cw != 2)
-	{
-		ft_putstr("Error:\nWrong number of parametres in sprite texture!\n");
-		exit(0);
-	}
-	else if ((re = open(&par[1][0], O_RDONLY) < 0))
-	{
-		ft_putstr("Error:\nFile or directory not found for sprite texture!\n");
-		exit(0);
+		while (++re < c_w(line, ' '))
+		{
+			str = ft_strjoin(str, &par[re][0]);
+			if (re != c_w(line, ' ') - 1)
+				str = ft_strjoin(str, " ");
+		}
+		if ((re = open(str, O_RDONLY) < 0))
+			texture_error(5);
+		else
+			g_s = ft_strdup(str);
 	}
 	else if ((re = open(&par[1][0], O_RDONLY) > 0))
 		g_s = ft_strdup(&par[1][0]);
-	freethenipples(par);
+	free_this_shit(str, par);
 }
 
 void	get_f(char *line)
@@ -84,11 +85,26 @@ void	get_f(char *line)
 	char	**colors;
 	int		cc;
 	int		cw;
+	int		i;
+	int		j;
 
+	i = 0;
+	j = 0;
 	cw = c_w(line, ' ');
 	par = ft_split(line, ' ');
 	cc = c_w(&par[1][0], ',');
 	colors = ft_split(&par[1][0], ',');
+	while (line[j])
+	{
+		if (line[j] == ',')
+			i++;
+		j++;
+	}
+	if (i != 2)
+	{
+		ft_putstr("Error:\n Wrong floor RGB");
+		exit(0);
+	}
 	freethenipples(par);
 	check_frgb(colors, cc, cw);
 	freethenipples(colors);

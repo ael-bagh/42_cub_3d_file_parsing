@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-bagh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 17:17:07 by ael-bagh          #+#    #+#             */
-/*   Updated: 2019/11/05 10:39:46 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/23 23:51:09 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,5 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	str[i] = '\0';
 	free(s1);
-	free(s2);
 	return (str);
 }

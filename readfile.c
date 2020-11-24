@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 15:27:14 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/20 13:41:31 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/24 00:09:54 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,10 @@ int		readline(void)
 	global_init();
 	while (get_next_line(fd, &line))
 	{
-		if (!all_params())
-		{
-			if (*line != '\0')
-				routing(line);
-		}
-		else
-		{
+		if (!all_params() && *line != '\0')
 			routing(line);
-		}
+		else
+			routing(line);
 		free(line);
 	}
 	free(line);
@@ -74,11 +69,10 @@ int		main(void)
 	longuest_line();
 	array_height();
 	ugh = map_manager();
-	// map_errors(ugh);
-	// printf("%d\n%d\n", g_width, g_height);
-	// printf("%s\n%s\n%s\n%s\n%s\n", g_no, g_so, g_we, g_ea, g_s);
-	// printf("floor rgb:%d,%d,%d\n", g_fr, g_fg, g_fb);
-	// printf("ceiling rgb:%d,%d,%d\n", g_cr, g_cg, g_cb);
+	printf("%d\n%d\n", g_width, g_height);
+	printf("%s\n%s\n%s\n%s\n%s\n", g_no, g_so, g_we, g_ea, g_s);
+	printf("floor rgb:%d,%d,%d\n", g_fr, g_fg, g_fb);
+	printf("ceiling rgb:%d,%d,%d\n", g_cr, g_cg, g_cb);
 	for(int i = 0; ugh[i]; i++)
 		printf("%s\n", ugh[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 11:46:48 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/20 14:53:54 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/23 10:48:13 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ char		**map_manager(void)
 	map_errors(map_array);
 	if (player.x == -1 || player.y == -1)
 	{
-		ft_putstr("the map has no player\n");
+		ft_putstr("Player or map missing\n");
 		exit(0);
 	}
 	return (map_array);

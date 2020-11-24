@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 17:17:29 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/20 14:47:29 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/23 22:24:46 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int     map_started;
 int     g_map_width;
 int     g_map_height;
 int		get_next_line(int fd, char **line);
+void    texture_error(int error);
+void    free_this_shit(char *str, char **s);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlen(char *s);
 size_t	ft_strlcpy(char *dst, char *src, size_t size);
