@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 10:58:13 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/13 11:53:56 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/28 00:47:03 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	global_init(void)
 	g_cr = -1;
 	g_cg = -1;
 	g_cb = -1;
-	map_started = 0;
+	g_map_started = 0;
 	g_map = ft_strdup("");
 }
 

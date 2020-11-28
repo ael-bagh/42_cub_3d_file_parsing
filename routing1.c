@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 15:40:10 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/24 00:14:24 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/27 12:14:00 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ void	get_no(char *line)
 			if (re != c_w(line, ' ') - 1)
 				str = ft_strjoin(str, " ");
 		}
-		if ((re = open(str, O_RDONLY) < 0))
+		if ((re = open(str, O_RDONLY) <= 0))
 			texture_error(1);
 		else
 			g_no = ft_strdup(str);
 	}
-	else if ((re = open(&par[1][0], O_RDONLY) > 0))
-		g_no = ft_strdup(&par[1][0]);
+	else
+		wrong_file(&par[1][0], 1);
 	free_this_shit(str, par);
 }
 
@@ -87,13 +87,13 @@ void	get_so(char *line)
 			if (re != c_w(line, ' ') - 1)
 				str = ft_strjoin(str, " ");
 		}
-		if ((re = open(str, O_RDONLY) < 0))
+		if ((re = open(str, O_RDONLY) <= 0))
 			texture_error(2);
 		else
 			g_so = ft_strdup(str);
 	}
-	else if ((re = open(&par[1][0], O_RDONLY) > 0))
-		g_so = ft_strdup(&par[1][0]);
+	else
+		wrong_file(&par[1][0], 2);
 	free_this_shit(str, par);
 }
 
@@ -116,13 +116,13 @@ void	get_we(char *line)
 			if (re != c_w(line, ' ') - 1)
 				str = ft_strjoin(str, " ");
 		}
-		if ((re = open(str, O_RDONLY) < 0))
+		if ((re = open(str, O_RDONLY) <= 0))
 			texture_error(3);
 		else
 			g_we = ft_strdup(str);
 	}
-	else if ((re = open(&par[1][0], O_RDONLY) > 0))
-		g_we = ft_strdup(&par[1][0]);
+	else
+		wrong_file(&par[1][0], 3);
 	free_this_shit(str, par);
 }
 
@@ -145,12 +145,12 @@ void	get_ea(char *line)
 			if (re != c_w(line, ' ') - 1)
 				str = ft_strjoin(str, " ");
 		}
-		if ((re = open(str, O_RDONLY) < 0))
+		if ((re = open(str, O_RDONLY) <= 0))
 			texture_error(4);
 		else
 			g_ea = ft_strdup(str);
 	}
-	else if ((re = open(&par[1][0], O_RDONLY) > 0))
-		g_ea = ft_strdup(&par[1][0]);
+	else
+		wrong_file(&par[1][0], 4);
 	free_this_shit(str, par);
 }

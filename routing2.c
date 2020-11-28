@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 10:57:24 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/24 20:33:43 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/28 18:31:29 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	get_s(char *line)
 		else
 			g_s = ft_strdup(str);
 	}
-	else if ((re = open(&par[1][0], O_RDONLY) > 0))
-		g_s = ft_strdup(&par[1][0]);
+	else
+		wrong_file(&par[1][0], 5);
 	free_this_shit(str, par);
 }
 
@@ -85,26 +85,24 @@ void	get_f(char *line)
 	char	**colors;
 	int		cc;
 	int		cw;
-	int		i;
-	int		j;
 
-	i = 0;
-	j = 0;
-	cw = c_w(line, ' ');
+	cw = 0;
 	par = ft_split(line, ' ');
-	cc = c_w(&par[1][0], ',');
+	cc = 0;
 	colors = ft_split(&par[1][0], ',');
-	while (line[j])
+	while (line[cc])
 	{
-		if (line[j] == ',')
-			i++;
-		j++;
+		if (line[cc] == ',')
+			cw++;
+		cc++;
 	}
-	if (i != 2)
+	if (cw != 2)
 	{
 		ft_putstr("Error:\n Wrong floor RGB");
 		exit(0);
 	}
+	cw = c_w(line, ' ');
+	cc = c_w(&par[1][0], ',');
 	freethenipples(par);
 	check_frgb(colors, cc, cw);
 	freethenipples(colors);
@@ -117,10 +115,23 @@ void	get_c(char *line)
 	int		cc;
 	int		cw;
 
-	cw = c_w(line, ' ');
+	cw = 0;
 	par = ft_split(line, ' ');
-	cc = c_w(&par[1][0], ',');
+	cc = 0;
 	colors = ft_split(&par[1][0], ',');
+	while (line[cc])
+	{
+		if (line[cc] == ',')
+			cw++;
+		cc++;
+	}
+	if (cw != 2)
+	{
+		ft_putstr("Error:\n Wrong ceiling RGB");
+		exit(0);
+	}
+	cw = c_w(line, ' ');
+	cc = c_w(&par[1][0], ',');
 	freethenipples(par);
 	check_crgb(colors, cc, cw);
 	freethenipples(colors);

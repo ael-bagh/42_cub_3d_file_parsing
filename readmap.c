@@ -6,7 +6,7 @@
 /*   By: ael-bagh <ael-bagh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 14:02:04 by ael-bagh          #+#    #+#             */
-/*   Updated: 2020/11/16 20:03:08 by ael-bagh         ###   ########.fr       */
+/*   Updated: 2020/11/28 00:46:50 by ael-bagh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int		check_char(char *mapline, char c)
 
 void	readmap(char *line)
 {
-	if (line[0] != '\0' && !map_started)
-		map_started = 1;
-	if (map_started && line[0] != '\0')
+	if (line[0] != '\0' && !g_map_started)
+		g_map_started = 1;
+	if (g_map_started && line[0] != '\0')
 	{
 		g_map = ft_strjoi(g_map, line);
 	}
-	if (map_started && line[0] == '\0')
+	if (g_map_started && line[0] == '\0')
 	{
 		ft_putstr("map has a new line");
 		exit(0);
